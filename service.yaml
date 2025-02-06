@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-abb
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app: web-abb  # Match the Deployment labels
+  type: ClusterIP  # Use ClusterIP for Ingress

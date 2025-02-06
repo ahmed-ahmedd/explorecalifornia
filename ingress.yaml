@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: calfornia
+spec:
+  rules:
+  - host: explorecalifornia.local  # Ensure this is resolvable
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: web-abb  # Match the Service name
+            port:
+              number: 80

@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: web-abb  # Optional: Metadata labels
+  name: calfornia
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-abb  # Must match template.metadata.labels
+  template:
+    metadata:
+      labels:
+        app: web-abb  # Must match selector.matchLabels
+    spec:
+      containers:
+      - name: nginx
+        image: explorecalifornia:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+          - containerPort: 80
