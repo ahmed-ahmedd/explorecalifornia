@@ -18,12 +18,16 @@ pipeline {
         }
         stage('Deploy to Kubernetes') {
             steps {
-                sh 'kubectl apply -f k8s/'
+                sh 'kubectl apply -f Deployment.yaml'
+                sh 'kubectl apply -f service.yaml'
+                sh 'kubectl apply -f ingress.yaml'
             }
         }
         stage('Check Deployment') {
             steps {
-                sh 'kubectl get pods -n explorecalifornia'
+                sh 'kubectl get pods'
+                sh 'kubectl get svc'
+                sh 'kubectl get ingress'
             }
         }
     }
